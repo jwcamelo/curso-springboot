@@ -1,6 +1,9 @@
-package com.jwcamelo.cursomc.cursomc.domain;
+package com.jwcamelo.cursomc.domain;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,7 @@ public class Produto implements Serializable {
         this.preco=preco;
     }
 
+    @JsonBackReference
     @ManyToMany
     @JoinTable(name = "PRODUTO_CATEGORIA",
     joinColumns = @JoinColumn(name="produto_id"),

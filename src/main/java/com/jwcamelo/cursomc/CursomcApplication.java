@@ -1,9 +1,10 @@
-package com.jwcamelo.cursomc.cursomc;
+package com.jwcamelo.cursomc;
 
-import com.jwcamelo.cursomc.cursomc.domain.Categoria;
-import com.jwcamelo.cursomc.cursomc.domain.Produto;
-import com.jwcamelo.cursomc.cursomc.repositories.CategoriaRepository;
-import com.jwcamelo.cursomc.cursomc.repositories.ProdutoRepository;
+import com.jwcamelo.cursomc.domain.Categoria;
+import com.jwcamelo.cursomc.domain.Produto;
+import com.jwcamelo.cursomc.repositories.CategoriaRepository;
+import com.jwcamelo.cursomc.repositories.ProdutoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

@@ -1,7 +1,8 @@
-package com.jwcamelo.cursomc.cursomc.repositories;
+package com.jwcamelo.cursomc.repositories;
 
-import com.jwcamelo.cursomc.cursomc.domain.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.jwcamelo.cursomc.domain.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 }

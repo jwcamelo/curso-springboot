@@ -1,8 +1,9 @@
-package com.jwcamelo.cursomc.cursomc.repositories;
+package com.jwcamelo.cursomc.repositories;
 
-import com.jwcamelo.cursomc.cursomc.domain.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.jwcamelo.cursomc.domain.Categoria;
 
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria,Integer> {

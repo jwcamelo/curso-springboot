@@ -1,7 +1,8 @@
-package com.jwcamelo.cursomc.cursomc.resources;
+package com.jwcamelo.cursomc.resources;
 
-import com.jwcamelo.cursomc.cursomc.domain.Categoria;
-import com.jwcamelo.cursomc.cursomc.services.CategoriaService;
+import com.jwcamelo.cursomc.domain.Categoria;
+import com.jwcamelo.cursomc.services.CategoriaService;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,6 @@ public class CategoriaResource {
     @GetMapping("/{id}")
     public ResponseEntity<Object> find(@PathVariable(value="id") Integer id){
         Optional<Categoria> categoriaOptional = service.find(id);
-        if(!categoriaOptional.isPresent())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         return ResponseEntity.status(HttpStatus.OK).body(categoriaOptional.get());
     }
 
