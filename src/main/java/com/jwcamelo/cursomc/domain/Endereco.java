@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Endereco implements Serializable {
 	
@@ -24,12 +26,14 @@ public class Endereco implements Serializable {
 	private String bairro;
 	private String cep;
 	
-	@ManyToOne
-	@JoinColumn(name="cliente_id")
-	private Cidade cidade;
 	
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
+	private Cidade cidade;
+	
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
 	public Endereco() {}
