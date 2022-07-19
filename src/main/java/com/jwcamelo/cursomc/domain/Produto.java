@@ -1,15 +1,22 @@
 package com.jwcamelo.cursomc.domain;
 
-import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Produto implements Serializable {
@@ -21,8 +28,11 @@ public class Produto implements Serializable {
     private String nome;
     private Double preco;
     
+
+    @JsonIgnore
     @OneToMany(mappedBy="id.produto")
     private Set<ItemPedido> itens = new HashSet<>();
+    
 
     public Produto(){}
 
@@ -33,6 +43,7 @@ public class Produto implements Serializable {
         this.preco=preco;
     }
     
+    @JsonIgnore
     public List<Pedido> getPedidos(){
     	List<Pedido> lista = new ArrayList<>();
     	for(ItemPedido x: itens)
@@ -40,7 +51,7 @@ public class Produto implements Serializable {
     	return lista;
     }
 
-    @JsonBackReference
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "PRODUTO_CATEGORIA",
     joinColumns = @JoinColumn(name="produto_id"),
@@ -48,11 +59,12 @@ public class Produto implements Serializable {
     private List<Categoria> categorias = new ArrayList<>();
 
     
-    
+    @JsonIgnore
     public Set<ItemPedido> getItems() {
 		return itens;
 	}
 
+    
 	public void setItems(Set<ItemPedido> itens) {
 		this.itens = itens;
 	}
