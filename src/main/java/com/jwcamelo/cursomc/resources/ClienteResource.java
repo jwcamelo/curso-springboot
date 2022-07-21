@@ -4,14 +4,17 @@ import com.jwcamelo.cursomc.domain.Categoria;
 import com.jwcamelo.cursomc.domain.Cliente;
 import com.jwcamelo.cursomc.dto.CategoriaDTO;
 import com.jwcamelo.cursomc.dto.ClienteDTO;
+import com.jwcamelo.cursomc.dto.ClienteNewDTO;
 import com.jwcamelo.cursomc.services.ClienteService;
 
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,6 +33,15 @@ public class ClienteResource {
     public ResponseEntity<Object> find(@PathVariable(value="id") Integer id){
         Optional<Cliente> ClienteOptional = service.find(id);
         return ResponseEntity.status(HttpStatus.OK).body(ClienteOptional.get());
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto){
+        Cliente obj = service.fromDTO(objDto);
+        obj = service.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
     @PutMapping("/{id}")
@@ -64,5 +76,4 @@ public class ClienteResource {
         Page<ClienteDTO> listDto = list.map(obj -> new ClienteDTO(obj));
         return ResponseEntity.ok().body(listDto);
     }
-
 }
