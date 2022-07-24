@@ -1,12 +1,9 @@
 package com.jwcamelo.cursomc.services.validation;
 
 import com.jwcamelo.cursomc.domain.Cliente;
-import com.jwcamelo.cursomc.domain.enums.TipoCliente;
 import com.jwcamelo.cursomc.dto.ClienteDTO;
-import com.jwcamelo.cursomc.dto.ClienteNewDTO;
 import com.jwcamelo.cursomc.repositories.ClienteRepository;
 import com.jwcamelo.cursomc.resources.exception.FieldMessage;
-import com.jwcamelo.cursomc.services.validation.utils.BR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerMapping;
 
