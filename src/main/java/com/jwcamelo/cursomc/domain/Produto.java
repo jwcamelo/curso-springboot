@@ -60,12 +60,12 @@ public class Produto implements Serializable {
 
     
     @JsonIgnore
-    public Set<ItemPedido> getItems() {
+    public Set<ItemPedido> getItens() {
 		return itens;
 	}
 
     
-	public void setItems(Set<ItemPedido> itens) {
+	public void setItens(Set<ItemPedido> itens) {
 		this.itens = itens;
 	}
 
